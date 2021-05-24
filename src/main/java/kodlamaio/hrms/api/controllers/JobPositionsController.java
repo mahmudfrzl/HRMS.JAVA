@@ -24,4 +24,5 @@ public class JobPositionsController {
 	public List<JobPosition> getAll(){
 		return jobPositionService.getAll();
 	}
+
 }
