@@ -2,7 +2,6 @@ package kodlamaio.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -12,15 +11,12 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 @Data
 @Entity
-@Table(name="employees")
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name="activation_code_candidates")
 @EqualsAndHashCode(callSuper = true)
-@PrimaryKeyJoinColumn(name = "employees_id")
-public class Employee extends User{
-
-	@Column(name="first_name")
-	private String firstName;
-	@Column(name="last_name")
-	private String lastName;
+@PrimaryKeyJoinColumn(name="id")
+@NoArgsConstructor
+@AllArgsConstructor
+public class ActivationCodeCandidate extends ActivationCode{
+	@Column(name="candidate_user_id")
+	private int candidateUserId;
 }
