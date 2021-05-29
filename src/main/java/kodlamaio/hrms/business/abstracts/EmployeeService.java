@@ -8,4 +8,5 @@ import kodlamaio.hrms.entities.concretes.Employee;
 
 public interface EmployeeService {
 	DataResult<List<Employee>> getAll();
+	
 }

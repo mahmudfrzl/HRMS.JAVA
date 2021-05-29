@@ -29,6 +29,7 @@ public class CandidateManager implements CandidateService{
 	private EmailService emailService;
 	private MernisService mernisService;
 	private ActivationCodeService activationCodeService;
+	
 
 	@Autowired
 	public CandidateManager(CandidateDao candidateDao,EmailService emailService,ActivationCodeService activationCodeService,MernisService mernisService) {
@@ -37,6 +38,7 @@ public class CandidateManager implements CandidateService{
 		this.emailService=emailService;
 		this.activationCodeService = activationCodeService;
 		this.mernisService=mernisService;
+		
 
 	}
 
@@ -101,19 +103,19 @@ public class CandidateManager implements CandidateService{
 			allDataResult.addResult(new ErrorResult(Messages.passwordIsEmpty));
 		}
 		if(candidate.getBirthDate() == null) {
-			allDataResult.addResult(new ErrorResult("Dogum tarihi bos"));
+			allDataResult.addResult(new ErrorResult(Messages.birthDayIsEmpty));
 		}
 		if(!emailService.isOkay(candidate.getEmail())) {
-			allDataResult.addResult(new ErrorResult("Email hatali"));
+			allDataResult.addResult(new ErrorResult(Messages.wrogEmail));
 		}
 		if(!checkEmail(candidate.getEmail())) {
-			allDataResult.addResult(new ErrorResult("Sistemde email kaydi mevcut"));
+			allDataResult.addResult(new ErrorResult(Messages.ThisEmailAddressIsUsed));
 		}
 		if(!checkPassword(candidate.getPassword())) {
-			allDataResult.addResult(new ErrorResult("Sistemde sifre kaydi mevcut"));
+			allDataResult.addResult(new ErrorResult(Messages.ThisPasswordAddressIsUsed));
 		}
 		if(!checkIdentityCode(candidate.getIdentityNumber())) {
-			allDataResult.addResult(new ErrorResult("Sistemde tc no kaydi mevcut"));
+			allDataResult.addResult(new ErrorResult(Messages.ThisNationalIdIsUsed));
 		}
 		
 

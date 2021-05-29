@@ -29,7 +29,7 @@ public class JobPositionsController {
 		return jobPositionService.getAll();
 	}
 	@PostMapping("/add")
-	public Result add(@RequestBody JobPosition jobPosition) {
+	public List<Result>  add(@RequestBody JobPosition jobPosition) {
 		return jobPositionService.add(jobPosition);
 	}
 

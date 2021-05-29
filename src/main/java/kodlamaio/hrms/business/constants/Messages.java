@@ -4,7 +4,11 @@ public class Messages {
     public static String AuthorizationDenied = "Authorization Denied.";
     public static String emailIsEmpty = "Email is Empty!";
     public static String passwordIsEmpty = "Password is Empty!";
+    public static String cNameIsEmpty = "Company Name is Empty!";
+    public static String webSiteIsEmpty = "Website name is Empty!";
     public static String nameIsEmpty = "Name is Empty!";
+    public static String birthDayIsEmpty = "Birth Day is Empty!";
+    public static String phoneNumberIsEmpty = "Phone Number is Empty!";
     public static String lastNameIsEmpty = "Last Name is Empty!";
     public static String identityNumberIsEmpty = "Identity Number Is Empty!";
     public static String emptyFields = "Fields cannot be left blank!";
@@ -16,8 +20,12 @@ public class Messages {
     public static String CandidateAdded = "Candidate Added";
     public static String LoginSuccessful = "Login Successful";
     public static String WrongPassword= "Wrong Password";
+    public static String wrogEmail = "Wrong Email";
     public static String RegisterSuccess = "Register Success!";
+    public static String RegisterUnSuccess = "Registration failed!";
+    public static String emailAndHrmsPersonelVerification = "E-mail verification and approval of the HRMS personnel was made.";
     public static String DeleteSuccess = "Delete Success";
+    public static String ThisTitleIsAlreadyInTheSystem = "This Title Is Already Exist";
     public static String UpdateSuccess = "Update Success";
     public static String generatedActivationCode = "Verification code generated!";
     public static String mernisAuthentication = "Mernis Authentication successful!";
