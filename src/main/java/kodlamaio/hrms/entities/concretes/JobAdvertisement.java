@@ -1,7 +1,8 @@
 package kodlamaio.hrms.entities.concretes;
 
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,20 +25,20 @@ import lombok.NoArgsConstructor;
 public class JobAdvertisement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="job_advertisement_id")
+	@Column(name="id")
 	private int id;
 	@Column(name="job_description")
 	private String jobDescription;
 	@Column(name="min_salary")
-	private String minSalary;
+	private int minSalary;
 	@Column(name="max_salary")
-	private String maxSalary;
+	private int maxSalary;
 	@Column(name="number_of_position")
 	private int numberOfPosition;
 	@Column(name="application_date")
-	private LocalDateTime applicationDate = LocalDateTime.now();
+	private LocalDate applicationDate;
 	@Column(name="created_at")
-	private LocalDateTime createdAt = LocalDateTime.now();
+	private LocalDate createdAt ;
 	@Column(name="enable")
 	private boolean enable;
 	
