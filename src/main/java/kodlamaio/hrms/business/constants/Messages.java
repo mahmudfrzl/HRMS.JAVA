@@ -9,6 +9,7 @@ public class Messages {
     public static String nameIsEmpty = "Name is Empty!";
     public static String birthDayIsEmpty = "Birth Day is Empty!";
     public static String phoneNumberIsEmpty = "Phone Number is Empty!";
+    public static String jobAdvertisement = "Job Advertisement added";
     public static String lastNameIsEmpty = "Last Name is Empty!";
     public static String identityNumberIsEmpty = "Identity Number Is Empty!";
     public static String emptyFields = "Fields cannot be left blank!";
@@ -17,6 +18,7 @@ public class Messages {
     public static String AllEmployeeListed = "All Employee Listed";
     public static String EmployerAdded = "Employer Added";
     public static String JobPositionAdded = "New Job Added";
+    public static String CityAdded = "New City Added";
     public static String CandidateAdded = "Candidate Added";
     public static String LoginSuccessful = "Login Successful";
     public static String WrongPassword= "Wrong Password";
