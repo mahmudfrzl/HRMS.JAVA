@@ -2,11 +2,11 @@ package kodlamaio.hrms.entities.dtos;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
 
-import kodlamaio.hrms.entities.concretes.City;
-import kodlamaio.hrms.entities.concretes.Employer;
-import kodlamaio.hrms.entities.concretes.JobPosition;
+import javax.validation.constraints.NotBlank;
+
+import com.sun.istack.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,18 +16,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobAdvertisementsDto {
-	
-
+	@NotNull
+	private int id;
+	@NotNull
+	@NotBlank
 	private String jobDescription;
-
-	private int minSalary;
-	private int maxSalary;
+	@NotNull
 	private int numberOfPosition;
+	@NotNull
 	private LocalDate applicationDate;
+	@NotNull
 	private LocalDate createdAt ;
-	private boolean enable;
+	@NotNull
 	private int city;
+	@NotNull
 	private int employer;
+	@NotNull
 	private int jobPositions;
 	
 	

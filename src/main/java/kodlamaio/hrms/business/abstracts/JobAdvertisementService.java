@@ -10,7 +10,7 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementsDto;
 
 public interface JobAdvertisementService {
 	JobAdvertisement findById(int id);
-	 List<Result>  add(JobAdvertisementsDto jobAdvertisementsDto);
+	List<Result>  add(JobAdvertisementsDto jobAdvertisementsDto);
 	DataResult<List<JobAdvertisement>> getAll();
 	DataResult<List<JobAdvertisement>> findByAllEnable();
 	DataResult<List<JobAdvertisement>> findByEnableTrueOrderByCreatedAtAsc();

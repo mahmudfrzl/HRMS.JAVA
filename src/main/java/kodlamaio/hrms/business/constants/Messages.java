@@ -23,7 +23,8 @@ public class Messages {
     public static String LoginSuccessful = "Login Successful";
     public static String WrongPassword= "Wrong Password";
     public static String wrogEmail = "Wrong Email";
-    public static String RegisterSuccess = "Register Success!";
+    public static String applicationDate = "Last apply Date shouldn't blank!";
+    public static String RegisterSuccess = "Registration Successful!";
     public static String RegisterUnSuccess = "Registration failed!";
     public static String emailAndHrmsPersonelVerification = "E-mail verification and approval of the HRMS personnel was made.";
     public static String DeleteSuccess = "Delete Success";
@@ -35,8 +36,11 @@ public class Messages {
     public static String ThisEmailAddressIsUsed = "This email address is used";
     public static String ThisNationalIdIsUsed = "This National Id is used";
     public static String EmailSend = "Email Send";
+    public static String City = "City not Found";
     public static String EmailSendingFailed = "Email Sending Failed";
-    public static String DataListed = "Data Listed";
+    public static String DataListed = "Must be at least 5 characters";
+    public static String JobDescription = "Data Listed";
+    public static String NumberOfPositions = "Must be at least 1 person";
     public static String ThisWebSiteAddressIsAlreadyInTheSystem = "This website address is already registered in the system!";
     public static String ThisPhoneNumberIsAlreadyInTheSystem = "This Phone number is already registered in the system!";
     public static String EmailAddressIsNotRegisteredInTheSystem = "Email address is not registered in the system. Please register";
