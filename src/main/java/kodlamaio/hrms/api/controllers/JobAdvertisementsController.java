@@ -17,7 +17,8 @@ import kodlamaio.hrms.core.utilities.results.Result;
 
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 
-import kodlamaio.hrms.entities.dtos.JobAdvertisementsDto;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementAddDto;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementListDto;
 @RestController
 @RequestMapping("/api/jobadvertisement")
 
@@ -38,27 +39,27 @@ public class JobAdvertisementsController {
 	}
 
 	@GetMapping("/findByAllEnable")
-	public DataResult<List<JobAdvertisement>> findByAllEnable() {
+	public DataResult<List<JobAdvertisementListDto>> findByAllEnable() {
 		return this.jobAdvertisementService.findByAllEnable();
 	}
 	@GetMapping("/findByEnableTrueOrderByCreatedAtAsc")
-	public DataResult<List<JobAdvertisement>>findByEnableTrueOrderByCreatedAtAsc() {
-		return this.jobAdvertisementService.findByEnableTrueOrderByCreatedAtAsc();
+	public DataResult<List<JobAdvertisementListDto>> findByEnableTrueOrderByCreatedAtAsc() {
+			return this.jobAdvertisementService.findByEnableTrueOrderByCreatedAtAsc();
 	}
 	@GetMapping("/findByEnableTrueOrderByApplicationDateDesc")
-	public DataResult<List<JobAdvertisement>> findByEnableTrueOrderByApplicationDateDesc() {
-		return this.jobAdvertisementService.findByEnableTrueOrderByApplicationDateDesc();
+	public DataResult<List<JobAdvertisementListDto>> findByEnableTrueOrderByApplicationDateDesc() {
+			return this.jobAdvertisementService.findByEnableTrueOrderByApplicationDateDesc();
 	}
 	@GetMapping("/findByEmployerIdAndEnableTrue")
-	public DataResult<List<JobAdvertisement>>  findByEmployerIdAndEnableTrue(@RequestParam int id) {
-		return this.jobAdvertisementService.findByEmployerIdAndEnableTrue( id);
+	public DataResult<List<JobAdvertisementListDto>>  findByEmployerIdAndEnableTrue(@RequestBody int id){
+			return this.jobAdvertisementService.findByEmployerIdAndEnableTrue( id);
 	}
 	@GetMapping("/findByEnableTrueAndCompanyName")
-	public DataResult<List<JobAdvertisement>> findByEnableTrueAndEmployer_CompanyName(@RequestParam String companyName) {
-		return this.jobAdvertisementService.findByEnableTrueAndEmployer_CompanyName(companyName);
+	public DataResult<List<JobAdvertisementListDto>>  findByEnableTrueAndEmployer_CompanyName(@RequestBody String companyName) {
+			return this.jobAdvertisementService.findByEnableTrueAndEmployer_CompanyName(companyName);
 	}
 	@PostMapping("/add")
-	public List<Result> add(@RequestBody  JobAdvertisementsDto jobAdvertisementsDto) {
+	public List<Result> add(@RequestBody  JobAdvertisementAddDto jobAdvertisementsDto) {
 		return this.jobAdvertisementService.add(jobAdvertisementsDto);
 	}
 

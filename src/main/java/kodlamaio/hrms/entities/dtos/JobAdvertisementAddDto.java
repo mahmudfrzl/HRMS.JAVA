@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobAdvertisementsDto {
+public class JobAdvertisementAddDto {
 	@NotNull
 	private int id;
 	@NotNull

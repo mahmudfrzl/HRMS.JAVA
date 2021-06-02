@@ -25,7 +25,9 @@ import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 import kodlamaio.hrms.entities.concretes.JobPosition;
 
-import kodlamaio.hrms.entities.dtos.JobAdvertisementsDto;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementAddDto;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementListDto;
+import net.bytebuddy.asm.Advice.This;
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService{
 	private JobAdvertisementDao jobAdvertisementDao;
@@ -54,34 +56,33 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>>findByAllEnable() {
+	public DataResult<List<JobAdvertisementListDto>> findByAllEnable() {
 		
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findByEnableTrue(),Messages.DataListed);
-
+		return new SuccessDataResult<List<JobAdvertisementListDto>>(this.jobAdvertisementDao.findByEnableTrue(), Messages.DataListed);
 }
 	@Override
-	public DataResult<List<JobAdvertisement>>findByEnableTrueOrderByCreatedAtAsc() {
+	public DataResult<List<JobAdvertisementListDto>> findByEnableTrueOrderByCreatedAtAsc() {
 		
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findByEnableTrueOrderByCreatedAtAsc(),Messages.DataListed);
+		return new SuccessDataResult<List<JobAdvertisementListDto>>(this.jobAdvertisementDao.findByEnableTrueOrderByCreatedAtAsc(), Messages.DataListed);
 	}
 	@Override
-	public DataResult<List<JobAdvertisement>>findByEnableTrueOrderByApplicationDateDesc() {
+	public DataResult<List<JobAdvertisementListDto>> findByEnableTrueOrderByApplicationDateDesc() {
 		
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findByEnableTrueOrderByApplicationDateDesc(),Messages.DataListed);
+		return new SuccessDataResult<List<JobAdvertisementListDto>>(this.jobAdvertisementDao.findByEnableTrueOrderByApplicationDateDesc(), Messages.DataListed);
 	}
 	@Override
-	public DataResult<List<JobAdvertisement>> findByEmployerIdAndEnableTrue(@RequestBody int id){
+	public DataResult<List<JobAdvertisementListDto>>  findByEmployerIdAndEnableTrue(@RequestBody int id){
 		
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findByEmployerIdAndEnableTrue( id),Messages.DataListed);
+		return new SuccessDataResult<List<JobAdvertisementListDto>>(this.jobAdvertisementDao.findByEmployerIdAndEnableTrue(id), Messages.DataListed);
 	}
 	@Override
-	public DataResult<List<JobAdvertisement>> findByEnableTrueAndEmployer_CompanyName(@RequestBody String companyName) {
+	public DataResult<List<JobAdvertisementListDto>>  findByEnableTrueAndEmployer_CompanyName(@RequestBody String companyName) {
 		
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findByEnableTrueAndEmployer_CompanyName(companyName));
+		return new SuccessDataResult<List<JobAdvertisementListDto>>(this.jobAdvertisementDao.findByEnableTrueAndEmployer_CompanyName(companyName), Messages.DataListed);
 	}
 	 
 	@Override
-	public List<Result>  add(JobAdvertisementsDto jobAdvertisementsDto) {
+	public List<Result>  add(JobAdvertisementAddDto jobAdvertisementsDto) {
 		AllDataResult allDataResult = new AllDataResult();
 		allDataResult = checkJobAdvertisementDto(jobAdvertisementsDto);
 		if(allDataResult.isSuccess()) {
@@ -112,7 +113,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		}
 		return allDataResult.getErrorResults();
 	}
-	private AllDataResult checkJobAdvertisementDto(JobAdvertisementsDto jobAdvertisementsDto) {
+	private AllDataResult checkJobAdvertisementDto(JobAdvertisementAddDto jobAdvertisementsDto) {
 		AllDataResult allDataResult = new AllDataResult();
 		if(jobAdvertisementsDto.getNumberOfPosition()==0) {
 			allDataResult.addResult(new ErrorResult(Messages.NumberOfPositions));
