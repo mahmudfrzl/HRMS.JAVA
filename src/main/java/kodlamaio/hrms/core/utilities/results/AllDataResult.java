@@ -9,16 +9,16 @@ public class AllDataResult {
 	private boolean error;
 	public AllDataResult() {
 		this.dataResult=new ArrayList<DataResult>();
-		this.result=new ArrayList<Result>();
-		this.error=true;
+		this.result= new ArrayList<Result>();
+		this.error=false;
 	}
 	public void addResult(DataResult result) {
 		this.dataResult.add(result);
-		if(result.isSuccess()==false) this.error=false;
+		if(result.isSuccess()==false) this.error=true;
 	}
 	public void addResult(Result result) {
 		this.result.add(result);
-		if(result.isSuccess()==false) this.error=false;
+		if(result.isSuccess()==false) this.error=true;
 	}
 	public boolean isSuccess() {
 		return this.error;

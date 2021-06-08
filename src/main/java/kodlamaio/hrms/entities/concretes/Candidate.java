@@ -1,16 +1,19 @@
-package kodlamaio.hrms.entities.concretes;
+ package kodlamaio.hrms.entities.concretes;
 
 
 
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,5 +37,9 @@ public class Candidate extends User{
 	@Column(name="birth_date")
 	private Date birthDate;
 	
+	
+
+
+
 	
 }
