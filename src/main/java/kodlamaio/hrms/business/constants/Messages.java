@@ -17,7 +17,8 @@ public class Messages {
     public static String candidateCvLanguage= "Language added to System";
     public static String candidateCvLinks= "Addresses added to System";
     public static String candidateCvTechnelogy= "Technelogy added to System";
-    public static String candidateCvSchoolGradiationDateDesc = "Candidates sorted by year of graduation";
+    public static String candidateCvSchoolGradiationDateDesc = "Candidates was sorted by year of graduation";
+    public static String candidateCvExperienceListed = "Candidates' experience was  sorted by year of graduation";
     public static String lastNameIsEmpty = "Last Name is Empty!";
     public static String identityNumberIsEmpty = "Identity Number Is Empty!";
     public static String emptyFields = "Fields cannot be left blank!";
@@ -32,6 +33,7 @@ public class Messages {
     public static String WrongPassword= "Wrong Password";
     public static String wrogEmail = "Wrong Email";
     public static String applicationDate = "Last apply Date shouldn't blank!";
+    public static String createDate = " Date shouldn't blank!";
     public static String RegisterSuccess = "Registration Successful!";
     public static String RegisterUnSuccess = "Registration failed!";
     public static String emailAndHrmsPersonelVerification = "E-mail verification and approval of the HRMS personnel was made.";

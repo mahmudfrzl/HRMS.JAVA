@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.ExperienceService;
+import kodlamaio.hrms.business.constants.Messages;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvExperienceDao;
@@ -22,7 +23,12 @@ public class CandidateCvExperienceManager implements ExperienceService{
 	@Override
 	public DataResult<List<CandidateCvExperience>> getAll() {
 		
-		return new SuccessDataResult<List<CandidateCvExperience>>(candidateCvExperienceDao.findAll(),"Data listelendi");
+		return new SuccessDataResult<List<CandidateCvExperience>>(candidateCvExperienceDao.findAll(),Messages.DataListed);
+	}
+	@Override
+	public DataResult<List<CandidateCvExperience>> findByCandidate_IdOrderByStartDateDesc(int id) {
+		
+		return new SuccessDataResult<List<CandidateCvExperience>>(this.candidateCvExperienceDao.findByCandidate_IdOrderByStartDateDesc(id),Messages.candidateCvExperience);
 	}
 
 

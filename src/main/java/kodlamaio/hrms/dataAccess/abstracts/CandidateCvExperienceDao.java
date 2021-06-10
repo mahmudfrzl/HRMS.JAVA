@@ -12,4 +12,5 @@ import kodlamaio.hrms.entities.concretes.CandidateCvExperience;
 public interface CandidateCvExperienceDao extends JpaRepository<CandidateCvExperience, Integer>{
 	@Query("From CandidateCvExperience cce inner join cce.candidate c where c.id=:candidateId")
 	List<CandidateCvExperience> findByCandidateId(int candidateId);
+	List<CandidateCvExperience> findByCandidate_IdOrderByStartDateDesc(int id);
 }

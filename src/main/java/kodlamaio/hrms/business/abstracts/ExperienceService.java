@@ -7,4 +7,5 @@ import kodlamaio.hrms.entities.concretes.CandidateCvExperience;
 
 public interface ExperienceService {
 	DataResult<List<CandidateCvExperience>> getAll();
+	 DataResult<List<CandidateCvExperience>> findByCandidate_IdOrderByStartDateDesc(int id);
 }

@@ -127,6 +127,12 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		if(jobAdvertisementsDto.getApplicationDate()==null) {
 			allDataResult.addResult(new ErrorResult(Messages.applicationDate));
 		}
+		if(jobAdvertisementsDto.getCreatedAt()==null) {
+			allDataResult.addResult(new ErrorResult(Messages.createDate));
+		}
+		if(employerDao.findById(jobAdvertisementsDto.getEmployer()).isEmpty()) {
+			allDataResult.addResult(new ErrorResult());
+		}
 		return allDataResult;
 	}
 	

@@ -17,17 +17,21 @@ import kodlamaio.hrms.entities.concretes.CandidateCvExperience;
 public class ExperienceController {
 
 
-private ExperienceService experienceService;
-@Autowired
-public ExperienceController(ExperienceService experienceService) {
+	private ExperienceService experienceService;
+	@Autowired
+	public ExperienceController(ExperienceService experienceService) {
 	super();
 	this.experienceService = experienceService;
 	}
-@GetMapping("/getAll")
-public DataResult<List<CandidateCvExperience>> getAll() {
+	@GetMapping("/getAll")
+	public DataResult<List<CandidateCvExperience>> getAll() {
 	return this.experienceService.getAll();
 }
-
+	@GetMapping("/findByCandidate_IdOrderByStartDateDesc")
+	public DataResult<List<CandidateCvExperience>> findByCandidate_IdOrderByStartDateDesc(int id) {
+	return this.experienceService.findByCandidate_IdOrderByStartDateDesc(id);
+}
+	
 
 
 }

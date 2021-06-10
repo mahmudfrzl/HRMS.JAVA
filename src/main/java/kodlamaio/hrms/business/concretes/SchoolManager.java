@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.SchoolService;
+import kodlamaio.hrms.business.constants.Messages;
 import kodlamaio.hrms.core.utilities.results.AllDataResult;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
@@ -38,7 +39,7 @@ public List<Result> addSchool(SchoolAddDto addDto) {
 	school.setSchoolType(schoolTypeDao.findById(addDto.getSchoolType()).get());
 	school.setSchoolWebsite(addDto.getSchoolWebsite());
 	this.schoolDao.save(school);
-	allDataResult.addResult(new SuccessResult("Kayit basarili"));
+	allDataResult.addResult(new SuccessResult(Messages.RegisterSuccess));
 	return allDataResult.getSuccessResults();
 }
 
