@@ -51,11 +51,11 @@ public class JobAdvertisementsController {
 			return this.jobAdvertisementService.findByEnableTrueOrderByApplicationDateDesc();
 	}
 	@GetMapping("/findByEmployerIdAndEnableTrue")
-	public DataResult<List<JobAdvertisementListDto>>  findByEmployerIdAndEnableTrue(@RequestBody int id){
+	public DataResult<List<JobAdvertisementListDto>>  findByEmployerIdAndEnableTrue(@RequestParam int id){
 			return this.jobAdvertisementService.findByEmployerIdAndEnableTrue( id);
 	}
 	@GetMapping("/findByEnableTrueAndCompanyName")
-	public DataResult<List<JobAdvertisementListDto>>  findByEnableTrueAndEmployer_CompanyName(@RequestBody String companyName) {
+	public DataResult<List<JobAdvertisementListDto>>  findByEnableTrueAndEmployer_CompanyName(@RequestParam String companyName) {
 			return this.jobAdvertisementService.findByEnableTrueAndEmployer_CompanyName(companyName);
 	}
 	@PostMapping("/add")

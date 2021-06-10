@@ -11,10 +11,12 @@ public class Messages {
     public static String phoneNumberIsEmpty = "Phone Number is Empty!";
     public static String jobAdvertisement = "Job Advertisement added";
     public static String candidateCv = "CandidateCv added";
+    public static String candidateCvCovverLetter = "Cover Letter added to System";
     public static String candidateCvSchool = "School added to System";
     public static String candidateCvExperience= "Experience added to System";
     public static String candidateCvLanguage= "Language added to System";
     public static String candidateCvLinks= "Addresses added to System";
+    public static String candidateCvTechnelogy= "Technelogy added to System";
     public static String candidateCvSchoolGradiationDateDesc = "Candidates sorted by year of graduation";
     public static String lastNameIsEmpty = "Last Name is Empty!";
     public static String identityNumberIsEmpty = "Identity Number Is Empty!";

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.entities.dtos.CandidateCVTechnelogyAddDto;
+import kodlamaio.hrms.entities.dtos.CandidateCvCovverLetterAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvExperienceAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvLanguageDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvLinkAddDto;
@@ -39,5 +41,13 @@ public class CandidateCvController {
 	@PostMapping("/addLink")
 	public List<Result> addLink(@RequestBody CandidateCvLinkAddDto cvLinkAddDto) {
 		return this.candidateService.addLink(cvLinkAddDto);
+	}
+	@PostMapping("/addTechnelogy")
+	public List<Result> addTechnelogy(@RequestBody CandidateCVTechnelogyAddDto cvTechnelogyDto) {
+		return this.candidateService.addTechnelogy(cvTechnelogyDto);
+	}
+	@PostMapping("/addCovverLetter")
+	public List<Result> addCovverLetter(@RequestBody CandidateCvCovverLetterAddDto cvCovverLetterAddDto) {
+		return this.candidateService.addCovverLetter(cvCovverLetterAddDto);
 	}
 }

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
@@ -46,6 +47,7 @@ public class CandidateCvExperience {
 	@Column(name="quit_date")
 	private LocalDate quitDate;
 	
+	@JsonIgnore
 	@JoinColumn(name="candidates_id")
 	@ManyToOne
 	private Candidate candidate;

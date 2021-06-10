@@ -36,4 +36,10 @@ public class School {
 	@JoinColumn(name= "school_type")
 	@ManyToOne()
 	private SchoolType schoolType;
+	
+	
+	/*
+	 * 
+	 *  
+	 *  */
 }

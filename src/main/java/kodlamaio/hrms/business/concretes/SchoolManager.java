@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.SchoolService;
 import kodlamaio.hrms.core.utilities.results.AllDataResult;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.SchoolDao;
 import kodlamaio.hrms.dataAccess.abstracts.SchoolTypeDao;
@@ -38,5 +40,11 @@ public List<Result> addSchool(SchoolAddDto addDto) {
 	this.schoolDao.save(school);
 	allDataResult.addResult(new SuccessResult("Kayit basarili"));
 	return allDataResult.getSuccessResults();
+}
+
+@Override
+public DataResult<List<School>> getAll() {
+	
+	return new SuccessDataResult<List<School>>(this.schoolDao.findAll());
 }
 }

@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -33,6 +35,7 @@ public class CandidateCvSchool {
 	private LocalDate gradiationDate;
 	@Column(name="school_department")
 	private String schoolDepartment;
+	@JsonIgnore
 	@JoinColumn(name="candidates_id")
 	@ManyToOne
 	private Candidate candidate;

@@ -21,16 +21,22 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobPositionDao;
+import kodlamaio.hrms.dataAccess.abstracts.CandidateCvCovverLetterDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvExperienceDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvLanguageDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvLinkDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvSchoolDao;
+import kodlamaio.hrms.dataAccess.abstracts.CandidateCvTechnelogyDao;
 import kodlamaio.hrms.dataAccess.abstracts.SchoolDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.CandidateCvCovverLetter;
 import kodlamaio.hrms.entities.concretes.CandidateCvExperience;
 import kodlamaio.hrms.entities.concretes.CandidateCvLanguage;
 import kodlamaio.hrms.entities.concretes.CandidateCvLink;
 import kodlamaio.hrms.entities.concretes.CandidateCvSchool;
+import kodlamaio.hrms.entities.concretes.CandidateCvTechnelogy;
+import kodlamaio.hrms.entities.dtos.CandidateCVTechnelogyAddDto;
+import kodlamaio.hrms.entities.dtos.CandidateCvCovverLetterAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvExperienceAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvLanguageDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvLinkAddDto;
@@ -50,6 +56,8 @@ public class CandidateManager implements CandidateService{
 	private JobPositionDao jobPositionDao;
 	private CandidateCvLanguageDao candidateCvLanguageDao;
 	private CandidateCvLinkDao candidateCvLinkDao;
+	private CandidateCvTechnelogyDao candidateCvTechnelogyDao;
+	private CandidateCvCovverLetterDao candidateCvCovverLetterDao;
 	
 	
 
@@ -60,7 +68,8 @@ public class CandidateManager implements CandidateService{
 			CandidateCvSchoolDao candidateCvSchoolDao,
 			CandidateCvExperienceDao candidateCvExperienceDao,JobPositionDao jobPositionDao
 			,CandidateCvLanguageDao candidateCvLanguageDao,
-			CandidateCvLinkDao candidateCvLinkDao) {
+			CandidateCvLinkDao candidateCvLinkDao,CandidateCvTechnelogyDao candidateCvTechnelogyDao,
+			CandidateCvCovverLetterDao candidateCvCovverLetterDao) {
 		super();
 		this.candidateDao = candidateDao;
 		this.emailService=emailService;
@@ -72,6 +81,8 @@ public class CandidateManager implements CandidateService{
 		this.jobPositionDao = jobPositionDao;
 		this.candidateCvLanguageDao = candidateCvLanguageDao;
 		this.candidateCvLinkDao = candidateCvLinkDao;
+		this.candidateCvTechnelogyDao = candidateCvTechnelogyDao;
+		this.candidateCvCovverLetterDao = candidateCvCovverLetterDao;
 	}
 
 	@Override
@@ -197,7 +208,7 @@ public class CandidateManager implements CandidateService{
 	@Override
 	public DataResult<List<Candidate>> getById(int id) {
 			
-		this.candidateDao.getById(id);
+		this.candidateDao.getOne(id);
 		return new SuccessDataResult<List<Candidate>>();
 	}
 
@@ -254,6 +265,28 @@ public class CandidateManager implements CandidateService{
 		candidateCvLink.setLinkedinLink(cvLinkAddDto.getLinkedinLink());
 		this.candidateCvLinkDao.save(candidateCvLink);
 		allDataResult.addResult(new SuccessResult(Messages.candidateCvLinks));
+		return allDataResult.getSuccessResults();
+	}
+
+	@Override
+	public List<Result> addTechnelogy(CandidateCVTechnelogyAddDto cvTechnelogyDto) {
+		AllDataResult allDataResult = new AllDataResult();
+		CandidateCvTechnelogy candidateCvTechnelogy = new  CandidateCvTechnelogy();
+		candidateCvTechnelogy.setCandidate(candidateDao.findById(cvTechnelogyDto.getCandidateId()).get());
+		candidateCvTechnelogy.setUsedTechnology(cvTechnelogyDto.getUsedTechnology());
+		this.candidateCvTechnelogyDao.save(candidateCvTechnelogy);
+		allDataResult.addResult(new SuccessResult(Messages.candidateCvTechnelogy));
+		return allDataResult.getSuccessResults();
+	}
+
+	@Override
+	public List<Result> addCovverLetter(CandidateCvCovverLetterAddDto cvCovverLetterAddDto) {
+		AllDataResult allDataResult = new AllDataResult();
+		CandidateCvCovverLetter candidateCvCovverLetter = new CandidateCvCovverLetter();
+		candidateCvCovverLetter.setCandidate(candidateDao.findById(cvCovverLetterAddDto.getCandidateId()).get());
+		candidateCvCovverLetter.setComment(cvCovverLetterAddDto.getComment());
+		this.candidateCvCovverLetterDao.save(candidateCvCovverLetter);
+		allDataResult.addResult(new SuccessResult(Messages.candidateCvCovverLetter));
 		return allDataResult.getSuccessResults();
 	}
 	
