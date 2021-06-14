@@ -11,6 +11,7 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementListDto;
 
 public interface JobAdvertisementService {
 	JobAdvertisement findById(int id);
+	Result delete(int id);
 	List<Result>  add(JobAdvertisementAddDto jobAdvertisementsDto);
 	DataResult<List<JobAdvertisement>> getAll();
 	DataResult<List<JobAdvertisementListDto>>  findByAllEnable();

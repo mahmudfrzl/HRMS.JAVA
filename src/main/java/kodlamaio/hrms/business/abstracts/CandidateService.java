@@ -20,6 +20,7 @@ import kodlamaio.hrms.entities.dtos.CandidateCvSchoolAddDto;
 public interface CandidateService {
 	DataResult<List<Candidate>> getAll();	
 	List<Result> add(Candidate candidate);
+	Result delete(int id);
 	DataResult<List<Candidate>> getById(int id);
 	
 	

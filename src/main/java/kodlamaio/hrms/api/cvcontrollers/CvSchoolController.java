@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.cvcontrollers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +32,8 @@ public class CvSchoolController {
 	public DataResult<List<CandidateCvSchool>> findByCandidate_IdOrderByGradiationDateDesc(@RequestParam int id) {
 		return this.cvSchoolService.findByCandidate_IdOrderByGradiationDateDesc(id);
 	}
-	@PostMapping("/delete")
-	public Result delete(int id) {
+	@DeleteMapping("/delete")
+	public Result delete(@RequestParam int id) {
 		return this.cvSchoolService.delete(id);
 	}
 }

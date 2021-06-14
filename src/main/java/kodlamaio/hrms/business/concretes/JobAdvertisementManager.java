@@ -85,7 +85,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	public List<Result>  add(JobAdvertisementAddDto jobAdvertisementsDto) {
 		AllDataResult allDataResult = new AllDataResult();
 		allDataResult = checkJobAdvertisementDto(jobAdvertisementsDto);
-		if(allDataResult.isSuccess()) {
+		if(allDataResult.isSuccess()==false) {
 			
 		
 		JobAdvertisement jobAdvertisement = new JobAdvertisement();
@@ -118,9 +118,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		if(jobAdvertisementsDto.getNumberOfPosition()==0) {
 			allDataResult.addResult(new ErrorResult(Messages.NumberOfPositions));
 		}
-		if(jobAdvertisementsDto.getJobDescription().length()<5) {
-			allDataResult.addResult(new ErrorResult(Messages.JobDescription));
-		}
+
 		if(cityDao.findById(jobAdvertisementsDto.getCity()).isEmpty()) {
 			allDataResult.addResult(new ErrorResult(Messages.City));
 		}
@@ -134,6 +132,11 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 			allDataResult.addResult(new ErrorResult());
 		}
 		return allDataResult;
+	}
+	@Override
+	public Result delete(int id) {
+		this.jobAdvertisementDao.deleteById(id);
+		return new SuccessResult();
 	}
 	
 	

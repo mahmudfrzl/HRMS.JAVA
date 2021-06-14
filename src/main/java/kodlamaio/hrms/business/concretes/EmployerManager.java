@@ -43,7 +43,7 @@ public class EmployerManager implements EmployerService{
 		AllDataResult allDataResult = new AllDataResult();
 		allDataResult= checkAllFields(employer);
 		
-		if(allDataResult.isSuccess()) {
+		if(allDataResult.isSuccess()==false) {
 			emailVerification();
 			allDataResult.addResult(new SuccessResult(Messages.emailAndHrmsPersonelVerification));
 			employerDao.save(employer);
@@ -110,6 +110,12 @@ public class EmployerManager implements EmployerService{
 	public void emailVerification() {
 		
 		
+	}
+
+	@Override
+	public Result delete(int id) {
+		this.employerDao.deleteById(id);
+		return new SuccessResult();
 	}
 
 }

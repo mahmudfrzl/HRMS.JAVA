@@ -116,6 +116,9 @@ public class CandidateManager implements CandidateService{
 		
 	}
 
+
+
+
 	@Override
 	public AllDataResult checkAllFields(Candidate candidate) {
 		AllDataResult allDataResult = new AllDataResult();
@@ -288,6 +291,11 @@ public class CandidateManager implements CandidateService{
 		this.candidateCvCovverLetterDao.save(candidateCvCovverLetter);
 		allDataResult.addResult(new SuccessResult(Messages.candidateCvCovverLetter));
 		return allDataResult.getSuccessResults();
+	}
+
+	public Result delete(int id) {
+		this.candidateDao.deleteById(id);
+		return new SuccessResult();
 	}
 	
 	

@@ -11,6 +11,9 @@ import kodlamaio.hrms.entities.concretes.Employer;
 public interface EmployerService {
 	DataResult<List<Employer>> getAll();
 	List<Result> add(Employer employer);
+	public Result delete(int id);
+	
+	
 	AllDataResult checkAllFields(Employer employer);
 	boolean checkEmail(String email);
 	public void emailVerification();
