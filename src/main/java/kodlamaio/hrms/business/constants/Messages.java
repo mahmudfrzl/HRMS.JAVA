@@ -15,6 +15,7 @@ public class Messages {
     public static String candidateCvSchool = "School added to System";
     public static String candidateCvExperience= "Experience added to System";
     public static String candidateCvLanguage= "Language added to System";
+    public static String photo= "Photo added to System";
     public static String candidateCvLinks= "Addresses added to System";
     public static String candidateCvTechnelogy= "Technelogy added to System";
     public static String candidateCvSchoolGradiationDateDesc = "Candidates was sorted by year of graduation";

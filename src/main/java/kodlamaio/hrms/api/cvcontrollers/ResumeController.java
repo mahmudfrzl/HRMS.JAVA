@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.cvcontrollers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import kodlamaio.hrms.entities.dtos.ResumeDto;
 
 @RestController
 @RequestMapping("/api/resume")
+@CrossOrigin
 public class ResumeController {
 	private ResumeService resumeService;
 	@Autowired
@@ -23,7 +25,7 @@ public class ResumeController {
 		this.resumeService = resumeService;
 	}
 	@GetMapping("/showCv")
-	public DataResult<ResumeDto>  showCv(@RequestParam int candidateId) {
-		return this.resumeService.showCv(candidateId);
+	public DataResult<ResumeDto>  getAll(@RequestParam int candidateId) {
+		return this.resumeService.getAll(candidateId);
 	}
 }

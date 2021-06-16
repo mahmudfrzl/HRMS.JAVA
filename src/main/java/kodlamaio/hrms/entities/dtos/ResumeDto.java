@@ -8,6 +8,7 @@ import kodlamaio.hrms.entities.concretes.CandidateCvLanguage;
 import kodlamaio.hrms.entities.concretes.CandidateCvLink;
 import kodlamaio.hrms.entities.concretes.CandidateCvSchool;
 import kodlamaio.hrms.entities.concretes.CandidateCvTechnelogy;
+import kodlamaio.hrms.entities.concretes.Photo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,5 @@ public class ResumeDto {
 	private List<CandidateCvSchool> schools;
 	private List<CandidateCvTechnelogy> technelogies;
 	private List<CandidateCvCovverLetter> covverLetter;
+	private List<Photo> photo;
 }

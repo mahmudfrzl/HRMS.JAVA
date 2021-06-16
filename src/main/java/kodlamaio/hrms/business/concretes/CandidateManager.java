@@ -21,6 +21,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
 import kodlamaio.hrms.dataAccess.abstracts.JobPositionDao;
+import kodlamaio.hrms.dataAccess.abstracts.PhotoDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvCovverLetterDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvExperienceDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvLanguageDao;
@@ -35,12 +36,14 @@ import kodlamaio.hrms.entities.concretes.CandidateCvLanguage;
 import kodlamaio.hrms.entities.concretes.CandidateCvLink;
 import kodlamaio.hrms.entities.concretes.CandidateCvSchool;
 import kodlamaio.hrms.entities.concretes.CandidateCvTechnelogy;
+import kodlamaio.hrms.entities.concretes.Photo;
 import kodlamaio.hrms.entities.dtos.CandidateCVTechnelogyAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvCovverLetterAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvExperienceAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvLanguageDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvLinkAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvSchoolAddDto;
+import kodlamaio.hrms.entities.dtos.PhotoDto;
 
 @Service
 
@@ -58,6 +61,7 @@ public class CandidateManager implements CandidateService{
 	private CandidateCvLinkDao candidateCvLinkDao;
 	private CandidateCvTechnelogyDao candidateCvTechnelogyDao;
 	private CandidateCvCovverLetterDao candidateCvCovverLetterDao;
+	private PhotoDao photoDao;
 	
 	
 
@@ -69,7 +73,8 @@ public class CandidateManager implements CandidateService{
 			CandidateCvExperienceDao candidateCvExperienceDao,JobPositionDao jobPositionDao
 			,CandidateCvLanguageDao candidateCvLanguageDao,
 			CandidateCvLinkDao candidateCvLinkDao,CandidateCvTechnelogyDao candidateCvTechnelogyDao,
-			CandidateCvCovverLetterDao candidateCvCovverLetterDao) {
+			CandidateCvCovverLetterDao candidateCvCovverLetterDao,
+			 PhotoDao photoDao) {
 		super();
 		this.candidateDao = candidateDao;
 		this.emailService=emailService;
@@ -83,6 +88,7 @@ public class CandidateManager implements CandidateService{
 		this.candidateCvLinkDao = candidateCvLinkDao;
 		this.candidateCvTechnelogyDao = candidateCvTechnelogyDao;
 		this.candidateCvCovverLetterDao = candidateCvCovverLetterDao;
+		this.photoDao = photoDao;
 	}
 
 	@Override
@@ -297,6 +303,24 @@ public class CandidateManager implements CandidateService{
 		this.candidateDao.deleteById(id);
 		return new SuccessResult();
 	}
+
+	@Override
+	public List<Result> addPhoto(PhotoDto photoDto) {
+		AllDataResult allDataResult = new AllDataResult();
+		Photo photo = new Photo();
+		photo.setCandidate(candidateDao.findById(photoDto.getCandidateId()).get());
+		photo.setName(photoDto.getName());
+		photo.setPublicId(photo.getPublicId());
+		photo.setUrl(photoDto.getUrl());
+		this.photoDao.save(photo);
+		allDataResult.addResult(new SuccessResult(Messages.photo));
+		return allDataResult.getSuccessResults();
+	}
+
+	
+
+
+
 	
 	
 

@@ -16,6 +16,7 @@ import kodlamaio.hrms.entities.dtos.CandidateCvExperienceAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvLanguageDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvLinkAddDto;
 import kodlamaio.hrms.entities.dtos.CandidateCvSchoolAddDto;
+import kodlamaio.hrms.entities.dtos.PhotoDto;
 
 public interface CandidateService {
 	DataResult<List<Candidate>> getAll();	
@@ -38,6 +39,6 @@ public interface CandidateService {
 	 List<Result> addLink(CandidateCvLinkAddDto cvLinkAddDto);
 	 List<Result> addTechnelogy(CandidateCVTechnelogyAddDto cvTechnelogyDto);
 	 List<Result> addCovverLetter(CandidateCvCovverLetterAddDto cvCovverLetterAddDto);
-	
+	 List<Result> addPhoto(PhotoDto photoDto);
 	
 }

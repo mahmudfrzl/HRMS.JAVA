@@ -9,5 +9,5 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.dtos.ResumeDto;
 
 public interface ResumeService {
-	public DataResult<ResumeDto>  showCv( int candidateId);
+	public DataResult<ResumeDto>  getAll( int candidateId);
 }
