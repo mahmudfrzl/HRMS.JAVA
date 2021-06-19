@@ -50,14 +50,17 @@ public class ResumeManager implements ResumeService{
 		this.photoDao=photoDao;
 	}
 	@Override
-	public DataResult<ResumeDto> getAll(int candidateId) {
+	public DataResult<ResumeDto> getById(int candidateId) {
 		Candidate candidate = new Candidate();
-		candidate = candidateDao.findById(candidateId).get();
+		
 		ResumeDto resumeDto = new ResumeDto();
-		resumeDto.setEmail(candidate.getEmail());
-		resumeDto.setCandidatePhoto(candidate.getCandidatePhoto());
-		resumeDto.setFirstName(candidate.getFirstName());
-		resumeDto.setLastName(candidate.getLastName());
+		/*
+		 * resumeDto.setEmail(candidate.getEmail());
+		 * resumeDto.setCandidatePhoto(candidate.getCandidatePhoto());
+		 * resumeDto.setFirstName(candidate.getFirstName());
+		 * resumeDto.setLastName(candidate.getLastName());
+		 */
+		resumeDto.setCandidate(candidateDao.findById(candidateId).get());
 		resumeDto.setExperiences(this.candidateCvExperienceDao.findByCandidateId(candidateId));
 		resumeDto.setLanguages(this.languageDao.findByCandidateId(candidateId));
 		resumeDto.setTechnelogies(this.technelogyDao.findByCandidateId(candidateId));

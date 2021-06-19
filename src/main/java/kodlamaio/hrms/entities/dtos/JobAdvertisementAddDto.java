@@ -2,7 +2,7 @@ package kodlamaio.hrms.entities.dtos;
 
 import java.time.LocalDate;
 
-
+import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 import com.sun.istack.NotNull;
@@ -25,14 +25,22 @@ public class JobAdvertisementAddDto {
 	private int numberOfPosition;
 	@NotNull
 	private LocalDate applicationDate;
-	@NotNull
-	private LocalDate createdAt ;
+	
+	private LocalDate createdAt=LocalDate.now() ;
 	@NotNull
 	private int city;
 	@NotNull
 	private int employer;
 	@NotNull
-	private int jobPositions;
+	private int jobPositions;	
+	@NotNull
+	private int minSalary;	
+	@NotNull
+	private int maxSalary;
+	@NotNull
+	private int workingType;
+	@NotNull
+	private int workingTime;
 	
 	
 }

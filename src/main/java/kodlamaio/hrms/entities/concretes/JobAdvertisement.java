@@ -40,15 +40,15 @@ public class JobAdvertisement {
 	@Column(name="application_date")
 	private LocalDate applicationDate;
 	@Column(name="created_at")
-	private LocalDate createdAt ;
+	private LocalDate createdAt=LocalDate.now() ;
 	@Column(name="enable")
-	private boolean enable;
+	private boolean enable = true;
 	
 	
 	@ManyToOne()
 	@JoinColumn(name="city_id")
 	private City city;
-	@JsonIgnore
+	
 	@ManyToOne()
 	@JoinColumn(name="employers_id")
 	private Employer employer;
@@ -56,6 +56,11 @@ public class JobAdvertisement {
 	@ManyToOne()
 	@JoinColumn(name="job_positions_id")
 	private JobPosition jobPositions;
+	@ManyToOne()
+	@JoinColumn(name="working_type_id")
+	private WorkingType workingType;
 	
-	
+	@ManyToOne()
+	@JoinColumn(name="working_time_id")
+	private WorkingTime workingTime;
 }

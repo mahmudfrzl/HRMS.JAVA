@@ -2,6 +2,9 @@ package kodlamaio.hrms.entities.dtos;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.CandidateCvCovverLetter;
 import kodlamaio.hrms.entities.concretes.CandidateCvExperience;
 import kodlamaio.hrms.entities.concretes.CandidateCvLanguage;
@@ -17,11 +20,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResumeDto {
-	private int candidateId;
-	private String email;
-	private String firstName;
-	private String lastName;
-	private String candidatePhoto;
+	
+	/*
+	 * private int candidateId; private String email; private String firstName;
+	 * private String lastName; private String candidatePhoto;
+	 */
 	private List<CandidateCvExperience> experiences;
 	private List<CandidateCvLanguage> languages;
 	private List<CandidateCvLink> links;
@@ -29,4 +32,5 @@ public class ResumeDto {
 	private List<CandidateCvTechnelogy> technelogies;
 	private List<CandidateCvCovverLetter> covverLetter;
 	private List<Photo> photo;
+	private Candidate candidate;
 }

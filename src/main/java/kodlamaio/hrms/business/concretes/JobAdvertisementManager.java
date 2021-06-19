@@ -24,7 +24,8 @@ import kodlamaio.hrms.entities.concretes.City;
 import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 import kodlamaio.hrms.entities.concretes.JobPosition;
-
+import kodlamaio.hrms.entities.concretes.WorkingTime;
+import kodlamaio.hrms.entities.concretes.WorkingType;
 import kodlamaio.hrms.entities.dtos.JobAdvertisementAddDto;
 import kodlamaio.hrms.entities.dtos.JobAdvertisementListDto;
 import net.bytebuddy.asm.Advice.This;
@@ -99,11 +100,21 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		JobPosition jobPosition = new JobPosition();
 		jobPosition.setId(jobAdvertisementsDto.getJobPositions());
 		
+		WorkingTime workingTime = new WorkingTime();
+		workingTime.setId(jobAdvertisementsDto.getWorkingTime());
+		
+		WorkingType workingType = new WorkingType();
+		workingType.setId(jobAdvertisementsDto.getWorkingType());
+		
+		jobAdvertisement.setWorkingTime(workingTime);
+		jobAdvertisement.setWorkingType(workingType);
 		jobAdvertisement.setEmployer(employer) ;
 		jobAdvertisement.setCity(city);
 		jobAdvertisement.setJobPositions(jobPosition);
 		jobAdvertisement.setJobDescription(jobAdvertisementsDto.getJobDescription());
-
+		
+		jobAdvertisement.setMaxSalary(jobAdvertisementsDto.getMaxSalary());
+		jobAdvertisement.setMinSalary(jobAdvertisementsDto.getMinSalary());
 		jobAdvertisement.setNumberOfPosition(jobAdvertisementsDto.getNumberOfPosition());
 		jobAdvertisement.setApplicationDate(jobAdvertisementsDto.getApplicationDate());
 		jobAdvertisement.setCreatedAt(jobAdvertisementsDto.getCreatedAt());
@@ -125,9 +136,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		if(jobAdvertisementsDto.getApplicationDate()==null) {
 			allDataResult.addResult(new ErrorResult(Messages.applicationDate));
 		}
-		if(jobAdvertisementsDto.getCreatedAt()==null) {
-			allDataResult.addResult(new ErrorResult(Messages.createDate));
-		}
+
 		if(employerDao.findById(jobAdvertisementsDto.getEmployer()).isEmpty()) {
 			allDataResult.addResult(new ErrorResult());
 		}

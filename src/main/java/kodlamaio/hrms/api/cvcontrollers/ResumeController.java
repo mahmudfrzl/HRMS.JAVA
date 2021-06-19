@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.ResumeService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
-import kodlamaio.hrms.core.utilities.results.Result;
+
 import kodlamaio.hrms.entities.dtos.ResumeDto;
 
 @RestController
@@ -24,8 +24,8 @@ public class ResumeController {
 		super();
 		this.resumeService = resumeService;
 	}
-	@GetMapping("/showCv")
-	public DataResult<ResumeDto>  getAll(@RequestParam int candidateId) {
-		return this.resumeService.getAll(candidateId);
+	@GetMapping("/getById")
+	public DataResult<ResumeDto>  getById(@RequestParam int candidateId) {
+		return this.resumeService.getById(candidateId);
 	}
 }
