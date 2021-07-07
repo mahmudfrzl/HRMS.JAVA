@@ -3,6 +3,8 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -52,6 +54,7 @@ public class JobAdvertisementsController {
 	public DataResult<List<JobAdvertisementListDto>> findByEnableTrueOrderByApplicationDateDesc() {
 			return this.jobAdvertisementService.findByEnableTrueOrderByApplicationDateDesc();
 	}
+	@Transactional
 	@GetMapping("/findByEmployerIdAndEnableTrue")
 	public DataResult<List<JobAdvertisementListDto>>  findByEmployerIdAndEnableTrue(@RequestParam int id){
 			return this.jobAdvertisementService.findByEmployerIdAndEnableTrue( id);

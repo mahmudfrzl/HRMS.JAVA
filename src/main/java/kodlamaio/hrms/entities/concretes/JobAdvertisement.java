@@ -23,7 +23,6 @@ import lombok.NoArgsConstructor;
 @Table(name="job_advertisement")
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class JobAdvertisement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +41,7 @@ public class JobAdvertisement {
 	@Column(name="created_at")
 	private LocalDate createdAt=LocalDate.now() ;
 	@Column(name="enable")
-	private boolean enable = true;
+	private boolean enable;
 	
 	
 	@ManyToOne()

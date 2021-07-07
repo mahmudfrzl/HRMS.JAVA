@@ -11,4 +11,5 @@ import kodlamaio.hrms.entities.dtos.ResumeDto;
 public interface ResumeService {
 	public DataResult<ResumeDto>  getById( int candidateId);
 	
+	
 }

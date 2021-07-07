@@ -39,7 +39,21 @@ public class EmployeeManager implements EmployeeService {
 
 		return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(), Messages.AllEmployeeListed);
 	}
+	@Override
+	public List<Result> update(Employee employee) {
+		AllDataResult allDataResult = new AllDataResult();
+		allDataResult = checkALlFields(employee);
+		if (allDataResult.isSuccess()==false) {
+			emailService.isOkay(employee.getEmail());
+			allDataResult.addResult(new SuccessResult());
+			employeeDao.save(employee);
+			allDataResult.addResult(new SuccessResult(Messages.updateSuccess));
+			return allDataResult.getSuccessResults();
+		} else {
 
+			return allDataResult.getErrorResults();
+		}
+	}
 	@Override
 	public List<Result> add(Employee employee) {
 		AllDataResult allDataResult = new AllDataResult();
@@ -106,6 +120,8 @@ public class EmployeeManager implements EmployeeService {
 		this.employeeDao.deleteById(id);
 		return new SuccessResult();
 	}
+
+
 
 
 }

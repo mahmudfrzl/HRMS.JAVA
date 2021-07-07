@@ -16,10 +16,12 @@ import kodlamaio.hrms.dataAccess.abstracts.CandidateCvLinkDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvSchoolDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvTechnelogyDao;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
+
 import kodlamaio.hrms.dataAccess.abstracts.PhotoDao;
 import kodlamaio.hrms.dataAccess.abstracts.ResumeDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.dtos.ResumeDto;
+
 @Service
 public class ResumeManager implements ResumeService{
 	private ResumeDao resumeDao;
@@ -31,6 +33,7 @@ public class ResumeManager implements ResumeService{
 	private CandidateCvCovverLetterDao covverLetterDao;
 	private CandidateCvLinkDao linkDao; 
 	private PhotoDao photoDao;
+	
 	@Autowired
 	public ResumeManager(ResumeDao resumeDao,CandidateDao candidateDao,
 			CandidateCvExperienceDao candidateCvExperienceDao,
@@ -48,18 +51,15 @@ public class ResumeManager implements ResumeService{
 		this.technelogyDao = technelogyDao;
 		this.linkDao = linkDao;
 		this.photoDao=photoDao;
+		
+		
 	}
 	@Override
 	public DataResult<ResumeDto> getById(int candidateId) {
 		Candidate candidate = new Candidate();
 		
 		ResumeDto resumeDto = new ResumeDto();
-		/*
-		 * resumeDto.setEmail(candidate.getEmail());
-		 * resumeDto.setCandidatePhoto(candidate.getCandidatePhoto());
-		 * resumeDto.setFirstName(candidate.getFirstName());
-		 * resumeDto.setLastName(candidate.getLastName());
-		 */
+
 		resumeDto.setCandidate(candidateDao.findById(candidateId).get());
 		resumeDto.setExperiences(this.candidateCvExperienceDao.findByCandidateId(candidateId));
 		resumeDto.setLanguages(this.languageDao.findByCandidateId(candidateId));
@@ -70,6 +70,12 @@ public class ResumeManager implements ResumeService{
 		resumeDto.setCovverLetter(this.covverLetterDao.findByCandidateId(candidateId));
 		return new SuccessDataResult<ResumeDto>(resumeDto);
 	}
+	
+
+
+
+
+	 
 
 	
 

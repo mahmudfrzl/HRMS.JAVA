@@ -31,6 +31,7 @@ public class Messages {
     public static String CityAdded = "New City Added";
     public static String CandidateAdded = "Candidate Added";
     public static String LoginSuccessful = "Login Successful";
+    public static String updateSuccess = "Employee's information successfully updated";
     public static String WrongPassword= "Wrong Password";
     public static String wrogEmail = "Wrong Email";
     public static String applicationDate = "Last apply Date shouldn't blank!";

@@ -72,12 +72,12 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		return new SuccessDataResult<List<JobAdvertisementListDto>>(this.jobAdvertisementDao.findByEnableTrueOrderByApplicationDateDesc(), Messages.DataListed);
 	}
 	@Override
-	public DataResult<List<JobAdvertisementListDto>>  findByEmployerIdAndEnableTrue(@RequestBody int id){
+	public DataResult<List<JobAdvertisementListDto>>  findByEmployerIdAndEnableTrue( int id){
 		
 		return new SuccessDataResult<List<JobAdvertisementListDto>>(this.jobAdvertisementDao.findByEmployerIdAndEnableTrue(id), Messages.DataListed);
 	}
 	@Override
-	public DataResult<List<JobAdvertisementListDto>>  findByEnableTrueAndEmployer_CompanyName(@RequestBody String companyName) {
+	public DataResult<List<JobAdvertisementListDto>>  findByEnableTrueAndEmployer_CompanyName( String companyName) {
 		
 		return new SuccessDataResult<List<JobAdvertisementListDto>>(this.jobAdvertisementDao.findByEnableTrueAndEmployer_CompanyName(companyName), Messages.DataListed);
 	}

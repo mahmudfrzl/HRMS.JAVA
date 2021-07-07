@@ -13,15 +13,24 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvSchoolDao;
+import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
+import kodlamaio.hrms.dataAccess.abstracts.SchoolDao;
 import kodlamaio.hrms.entities.concretes.CandidateCvSchool;
+import kodlamaio.hrms.entities.dtos.CandidateCvSchoolAddDto;
 
 @Service
 public class CandidateCvSchoolManager implements CvSchoolService{
 	private CandidateCvSchoolDao candidateCvSchoolDao;
+	private CandidateDao candidateDao;
+	private SchoolDao schoolDao;
 	@Autowired
-	public CandidateCvSchoolManager(CandidateCvSchoolDao candidateCvSchoolDao) {
+	public CandidateCvSchoolManager(CandidateCvSchoolDao candidateCvSchoolDao,
+			CandidateDao candidateDao,
+			SchoolDao schoolDao) {
 		super();
 		this.candidateCvSchoolDao = candidateCvSchoolDao;
+		this.candidateDao = candidateDao;
+		this.schoolDao = schoolDao;
 	}
 	@Override
 	public DataResult<List<CandidateCvSchool>> getAll() {
@@ -39,5 +48,6 @@ public class CandidateCvSchoolManager implements CvSchoolService{
 		this.candidateCvSchoolDao.deleteById(id);
 		return new SuccessResult();
 	}
+
 
 }

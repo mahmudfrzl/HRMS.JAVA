@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.business.abstracts.CvSchoolService;
 import kodlamaio.hrms.core.utilities.cloudinaryAdapter.CloudinaryService;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.dtos.CandidateCVTechnelogyAddDto;
@@ -30,11 +32,13 @@ import kodlamaio.hrms.entities.dtos.PhotoDto;
 public class CandidateCvController {
 	private CandidateService candidateService;
 	private final CloudinaryService cloudinaryService;
+	private CvSchoolService cvSchoolService;
 	@Autowired
 	
-	public CandidateCvController(CandidateService candidateService,CloudinaryService cloudinaryService){
+	public CandidateCvController(CandidateService candidateService,CloudinaryService cloudinaryService, CvSchoolService cvSchoolService){
 		this.candidateService = candidateService;
 		this.cloudinaryService=cloudinaryService;
+		this.cvSchoolService = cvSchoolService;
 	}
 	@PostMapping("/addSchool")
 	private List<Result> addSchool(@RequestBody CandidateCvSchoolAddDto cvSchoolAddDto){
@@ -71,4 +75,5 @@ public class CandidateCvController {
 		}
 		return ResponseEntity.badRequest().body(result);
 	}
+
 }

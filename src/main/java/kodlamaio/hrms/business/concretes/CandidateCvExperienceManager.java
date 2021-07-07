@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import kodlamaio.hrms.business.abstracts.ExperienceService;
 import kodlamaio.hrms.business.constants.Messages;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateCvExperienceDao;
 import kodlamaio.hrms.entities.concretes.CandidateCvExperience;
+import kodlamaio.hrms.entities.dtos.CandidateCvExperienceAddDto;
 
 @Service
 public class CandidateCvExperienceManager implements ExperienceService{
@@ -30,6 +32,7 @@ public class CandidateCvExperienceManager implements ExperienceService{
 		
 		return new SuccessDataResult<List<CandidateCvExperience>>(this.candidateCvExperienceDao.findByCandidate_IdOrderByStartDateDesc(id),Messages.candidateCvExperience);
 	}
+
 
 
 }

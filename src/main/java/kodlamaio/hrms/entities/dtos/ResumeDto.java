@@ -33,4 +33,5 @@ public class ResumeDto {
 	private List<CandidateCvCovverLetter> covverLetter;
 	private List<Photo> photo;
 	private Candidate candidate;
+	
 }
